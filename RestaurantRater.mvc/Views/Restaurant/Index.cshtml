@@ -1,0 +1,54 @@
+﻿
+@model IEnumerable<RestaurantRater.mvc.Models.Restaurant>
+
+@{
+    ViewBag.Title = "Index";            //our @symbol is what tells this page that you're adding in code  The.Actionlink is a method that tells us to print an @ tag.  Below, we've entered into html. cs.html is the file extension for razor
+}                                       
+
+<h1>Index</h1>
+
+<p>
+    @Html.ActionLink("Create New", "Create")   
+</p> 
+
+<table class="table">
+    <tr>
+         <th>
+             @Html.DisplayNameFor(model => model.Name)
+         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach(var item in Model)         
+    { 
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)     <!--displaynamefor grabs the value of our properties from our POco-->
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.RestaurantID})             <!--how we pass info into the View-->
+                @Html.ActionLink("Details", "Details", new { id = item.RestaurantID})
+                @Html.ActionLink("Delete", "Delete", new { id = item.RestaurantID})
+            </td>
+        </tr>
+    }
+
+</table>
+
+
+
+
+
+
